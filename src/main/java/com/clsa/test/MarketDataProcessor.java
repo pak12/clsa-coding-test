@@ -8,6 +8,7 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -18,7 +19,7 @@ public class MarketDataProcessor {
     private static final int THROTTLE_PER_SEC = 100;
 
     // Store the latest data of the symbol
-    private final Map<String, MarketData> symbolMarketDataMap = new HashMap<>();
+    private final Map<String, MarketData> symbolMarketDataMap = new ConcurrentHashMap<>();
 
     // Map of symbols and their last published time
     private final HashMap<String, Instant> symbolLastPublishedInstantMap = new HashMap<>();
