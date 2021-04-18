@@ -6,14 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-
-import static org.awaitility.Awaitility.await;
 
 public class TestMain {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         MarketDataProcessor marketDataProcessor = new MarketDataProcessor();
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -26,7 +23,7 @@ public class TestMain {
 
             // Pause randomly
             if (r.nextInt(10) == 9) {
-                await().atMost(100, TimeUnit.MICROSECONDS);
+                Thread.sleep(100);
             }
             try {
                 MarketData marketData = objectMapper.readValue(line, MarketData.class);

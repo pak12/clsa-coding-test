@@ -50,16 +50,5 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>4.0.3</version>
-
-        </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility-proxy</artifactId>
-            <version>3.1.6</version>
-        </dependency>
     </dependencies>
 </project>
