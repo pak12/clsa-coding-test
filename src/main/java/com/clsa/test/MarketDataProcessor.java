@@ -73,11 +73,11 @@ public class MarketDataProcessor {
                     String symbol = symbolPublishQueue.poll(1, TimeUnit.SECONDS);
                     if (symbol == null) continue;
 
+                    if (!shouldPublishSymbol(symbol)) continue;
+
                     // To discuss: If no throttle is found
                     // should we keep taking from the queue or wait for throttle to reset?
                     if (!acquireThrottle()) continue;
-
-                    if (!shouldPublishSymbol(symbol)) continue;
 
                     // Publish latest data
                     publishAggregatedMarketData(symbolMarketDataMap.get(symbol));
